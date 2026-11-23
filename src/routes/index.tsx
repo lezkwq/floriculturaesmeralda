@@ -147,11 +147,11 @@ function Index() {
           </div>
         </Reveal>
 
-        <div className="mt-12 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-4 [scrollbar-width:none] md:mt-16 md:grid md:grid-cols-12 md:gap-6 md:overflow-visible md:px-12">
+        <div className="mt-12 grid gap-10 px-5 md:mt-16 md:grid-cols-12 md:gap-6 md:overflow-visible md:px-12">
           {gallery.map((g, i) => {
             const layout = ["md:col-span-4 md:mt-0", "md:col-span-3 md:mt-24", "md:col-span-3 md:mt-8", "md:col-span-2 md:mt-40"][i];
             return (
-              <Reveal key={g.alt} delay={i * 120} className={`w-[78vw] shrink-0 snap-center sm:w-[55vw] md:w-auto ${layout}`}>
+              <Reveal key={g.alt} delay={i * 120} className={`w-full md:w-auto ${layout}`}>
                 <a href={waLink(MSG_ITEM)} target="_blank" rel="noopener noreferrer" className="group block" aria-label={`Consultar este arranjo: ${g.alt}`}>
                   <div className="overflow-hidden bg-ivory">
                     <img src={g.src} alt={g.alt} loading="lazy" className={`aspect-[3/4] w-full object-cover ${g.pos} transition-transform duration-[1200ms] ease-out group-hover:scale-105`} />
