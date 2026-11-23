@@ -81,7 +81,7 @@ function Index() {
     const track = galleryTrackRef.current;
     if (!scrollArea || !viewport || !track) return;
 
-    const desktop = window.matchMedia("(min-width: 768px)");
+    const desktop = window.matchMedia("(min-width: 1024px)");
     let frame = 0;
 
     const updateGallery = () => {
@@ -195,7 +195,7 @@ function Index() {
 
       {/* ARRANJOS */}
       <section id="arranjos" className="py-20 md:py-32">
-        <Reveal className="px-5 md:px-12">
+        <Reveal className="px-5 md:px-12 lg:hidden">
           <div className="grid gap-4 md:grid-cols-12 md:items-end">
             <h2 className="font-display text-4xl leading-[1.05] text-wine md:col-span-7 md:text-6xl">
               Um detalhe que transforma <em>qualquer momento.</em>
@@ -206,9 +206,9 @@ function Index() {
           </div>
         </Reveal>
 
-        <div ref={galleryScrollRef} className="relative mt-12 h-[210svh] md:mt-16 md:h-auto md:px-12">
-          <div ref={galleryViewportRef} className="sticky top-0 flex h-[100svh] items-center overflow-hidden px-5 md:static md:block md:h-auto md:overflow-visible md:px-0">
-            <div ref={galleryTrackRef} className="flex w-max gap-4 will-change-transform md:grid md:w-full md:grid-cols-12 md:gap-6 md:overflow-visible md:will-change-auto">
+        <div ref={galleryScrollRef} className="relative mt-12 h-[210svh] md:mt-16 md:px-12 lg:hidden">
+          <div ref={galleryViewportRef} className="sticky top-0 flex h-[100svh] items-center overflow-hidden px-5 lg:static lg:block lg:h-auto lg:overflow-visible lg:px-0">
+            <div ref={galleryTrackRef} className="flex w-max gap-4 will-change-transform lg:grid lg:w-full lg:grid-cols-12 lg:gap-6 lg:overflow-visible lg:will-change-auto">
               {gallery.map((g, i) => {
                 const layout = [
                   "md:col-span-7",
@@ -233,7 +233,7 @@ function Index() {
                   "md:aspect-[4/5]",
                 ][i];
                 return (
-                  <Reveal key={g.alt} delay={i * 120} className={`w-[78vw] shrink-0 sm:w-[55vw] md:w-auto ${layout}`}>
+                  <Reveal key={g.alt} delay={i * 120} className={`w-[78vw] shrink-0 sm:w-[55vw] lg:w-auto ${layout}`}>
                     <a href={waLink(MSG_ITEM)} target="_blank" rel="noopener noreferrer" className="group block" aria-label={`Consultar este arranjo: ${g.alt}`}>
                       <div className="overflow-hidden bg-ivory">
                         <img src={g.src} alt={g.alt} loading="lazy" className={`aspect-[3/4] w-full object-cover ${imageShape} ${g.pos} transition-transform duration-[1200ms] ease-out group-hover:scale-105`} />
@@ -246,6 +246,44 @@ function Index() {
                   </Reveal>
                 );
               })}
+            </div>
+          </div>
+        </div>
+
+        <div className="hidden px-10 py-10 lg:block xl:px-16">
+          <div className="relative mx-auto h-[min(62vh,620px)] min-h-[520px] max-w-[1600px]">
+            {gallery.map((g, i) => {
+              const positions = [
+                "left-[3%] top-[12%] h-[42%] w-[15%]",
+                "left-[21%] top-[2%] h-[28%] w-[13%]",
+                "bottom-[4%] left-[13%] h-[35%] w-[20%]",
+                "left-[36%] top-[3%] h-[26%] w-[12%]",
+                "right-[22%] top-[4%] h-[31%] w-[15%]",
+                "right-[3%] top-[29%] h-[43%] w-[16%]",
+                "bottom-[4%] right-[22%] h-[32%] w-[15%]",
+                "bottom-[4%] left-[38%] h-[28%] w-[13%]",
+                "right-[40%] top-[8%] h-[22%] w-[12%]",
+              ][i];
+              const rotation = ["-rotate-2", "rotate-2", "rotate-1", "-rotate-1", "rotate-2", "rotate-1", "-rotate-2", "rotate-2", "-rotate-1"][i];
+              return (
+                <Reveal key={`editorial-${g.alt}`} delay={i * 70} className={`absolute z-0 ${positions}`}>
+                  <a href={waLink(MSG_ITEM)} target="_blank" rel="noopener noreferrer" aria-label={`Consultar este arranjo: ${g.alt}`} className={`block h-full w-full bg-white p-2 shadow-[0_12px_30px_-18px_rgba(42,24,18,0.55)] transition-transform duration-500 hover:z-20 hover:scale-105 hover:rotate-0 ${rotation}`}>
+                    <img src={g.src} alt={g.alt} loading="lazy" className="h-full w-full object-cover" />
+                  </a>
+                </Reveal>
+              );
+            })}
+            <div className="absolute left-1/2 top-1/2 z-10 w-[30%] -translate-x-1/2 -translate-y-1/2 bg-background/95 px-6 py-7 text-center backdrop-blur-sm">
+              <p className="text-xs uppercase tracking-[0.24em] text-crimson">Magia das Flores · Pomerode</p>
+              <h2 className="mt-4 font-display text-4xl leading-[1.05] text-wine xl:text-5xl">
+                Um detalhe que transforma <em>qualquer momento.</em>
+              </h2>
+              <p className="mx-auto mt-4 max-w-xs text-sm leading-relaxed text-muted-foreground">
+                Buquês e arranjos feitos para presentear, celebrar e surpreender.
+              </p>
+              <a href={waLink(MSG_MAIN)} target="_blank" rel="noopener noreferrer" className="mt-6 inline-flex items-center gap-2 bg-crimson px-5 py-3 text-sm font-medium text-on-photo transition-transform hover:-translate-y-0.5">
+                <WhatsIcon className="h-4 w-4" /> Escolher meu arranjo
+              </a>
             </div>
           </div>
         </div>
