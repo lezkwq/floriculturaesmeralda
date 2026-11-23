@@ -251,18 +251,18 @@ function Index() {
         </div>
 
         <div className="hidden px-10 py-10 lg:block xl:px-16">
-          <div className="relative mx-auto h-[min(62vh,620px)] min-h-[520px] max-w-[1600px]">
+          <div className="relative mx-auto h-[min(62vh,620px)] min-h-[520px] max-w-[1600px] overflow-hidden">
             {gallery.map((g, i) => {
               const positions = [
                 "left-[3%] top-[12%] h-[42%] w-[15%]",
-                "left-[21%] top-[2%] h-[28%] w-[13%]",
-                "bottom-[4%] left-[13%] h-[35%] w-[20%]",
-                "left-[36%] top-[3%] h-[26%] w-[12%]",
-                "right-[22%] top-[4%] h-[31%] w-[15%]",
+                "left-[20%] top-[4%] h-[28%] w-[12%]",
+                "bottom-[5%] left-[13%] h-[35%] w-[19%]",
+                "bottom-[10%] left-[4%] h-[24%] w-[12%]",
+                "right-[20%] top-[5%] h-[31%] w-[13%]",
                 "right-[3%] top-[29%] h-[43%] w-[16%]",
-                "bottom-[4%] right-[22%] h-[32%] w-[15%]",
-                "bottom-[4%] left-[38%] h-[28%] w-[13%]",
-                "right-[40%] top-[8%] h-[22%] w-[12%]",
+                "bottom-[5%] right-[17%] h-[32%] w-[15%]",
+                "right-[3%] top-[5%] h-[25%] w-[12%]",
+                "bottom-[7%] right-[18%] h-[24%] w-[12%]",
               ][i];
               const rotation = ["-rotate-2", "rotate-2", "rotate-1", "-rotate-1", "rotate-2", "rotate-1", "-rotate-2", "rotate-2", "-rotate-1"][i];
               return (
@@ -273,9 +273,9 @@ function Index() {
                 </Reveal>
               );
             })}
-            <div className="absolute left-1/2 top-1/2 z-10 w-[30%] -translate-x-1/2 -translate-y-1/2 bg-background/95 px-6 py-7 text-center backdrop-blur-sm">
+            <div className="absolute left-1/2 top-1/2 z-10 w-[32%] min-w-[300px] max-w-[500px] -translate-x-1/2 -translate-y-1/2 bg-background/95 px-4 py-6 text-center backdrop-blur-sm xl:px-6 xl:py-7">
               <p className="text-xs uppercase tracking-[0.24em] text-crimson">Magia das Flores · Pomerode</p>
-              <h2 className="mt-4 font-display text-4xl leading-[1.05] text-wine xl:text-5xl">
+              <h2 className="mt-4 font-display text-3xl leading-[1.06] text-wine xl:text-4xl">
                 Um detalhe que transforma <em>qualquer momento.</em>
               </h2>
               <p className="mx-auto mt-4 max-w-xs text-sm leading-relaxed text-muted-foreground">
