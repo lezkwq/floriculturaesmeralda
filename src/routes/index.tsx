@@ -255,14 +255,14 @@ function Index() {
             {gallery.map((g, i) => {
               const positions = [
                 "left-[3%] top-[12%] h-[42%] w-[15%]",
-                "left-[20%] top-[4%] h-[28%] w-[12%]",
-                "bottom-[5%] left-[13%] h-[35%] w-[19%]",
-                "bottom-[10%] left-[4%] h-[24%] w-[12%]",
-                "right-[20%] top-[5%] h-[31%] w-[13%]",
+                "left-[21%] top-[2%] h-[28%] w-[13%]",
+                "bottom-[4%] left-[13%] h-[35%] w-[20%]",
+                "left-[36%] top-[3%] h-[26%] w-[12%]",
+                "right-[22%] top-[4%] h-[31%] w-[15%]",
                 "right-[3%] top-[29%] h-[43%] w-[16%]",
-                "bottom-[5%] right-[17%] h-[32%] w-[15%]",
-                "right-[3%] top-[5%] h-[25%] w-[12%]",
-                "bottom-[7%] right-[18%] h-[24%] w-[12%]",
+                "bottom-[4%] right-[22%] h-[32%] w-[15%]",
+                "bottom-[4%] left-[38%] h-[28%] w-[13%]",
+                "right-[40%] top-[8%] h-[22%] w-[12%]",
               ][i];
               const rotation = ["-rotate-2", "rotate-2", "rotate-1", "-rotate-1", "rotate-2", "rotate-1", "-rotate-2", "rotate-2", "-rotate-1"][i];
               return (
@@ -273,7 +273,7 @@ function Index() {
                 </Reveal>
               );
             })}
-            <div className="absolute left-1/2 top-1/2 z-10 w-[32%] min-w-[300px] max-w-[500px] -translate-x-1/2 -translate-y-1/2 bg-background/95 px-4 py-6 text-center backdrop-blur-sm xl:px-6 xl:py-7">
+            <div className="pointer-events-none absolute left-1/2 top-1/2 z-10 w-[32%] min-w-[300px] max-w-[500px] -translate-x-1/2 -translate-y-1/2 text-center">
               <p className="text-xs uppercase tracking-[0.24em] text-crimson">Magia das Flores · Pomerode</p>
               <h2 className="mt-4 font-display text-3xl leading-[1.06] text-wine xl:text-4xl">
                 Um detalhe que transforma <em>qualquer momento.</em>
@@ -281,7 +281,7 @@ function Index() {
               <p className="mx-auto mt-4 max-w-xs text-sm leading-relaxed text-muted-foreground">
                 Buquês e arranjos feitos para presentear, celebrar e surpreender.
               </p>
-              <a href={waLink(MSG_MAIN)} target="_blank" rel="noopener noreferrer" className="mt-6 inline-flex items-center gap-2 bg-crimson px-5 py-3 text-sm font-medium text-on-photo transition-transform hover:-translate-y-0.5">
+              <a href={waLink(MSG_MAIN)} target="_blank" rel="noopener noreferrer" className="pointer-events-auto mt-6 inline-flex items-center gap-2 bg-crimson px-5 py-3 text-sm font-medium text-on-photo transition-transform hover:-translate-y-0.5">
                 <WhatsIcon className="h-4 w-4" /> Escolher meu arranjo
               </a>
             </div>
