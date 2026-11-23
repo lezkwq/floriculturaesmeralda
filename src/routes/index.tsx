@@ -62,6 +62,56 @@ const gallery = [
 
 function Index() {
   const [menu, setMenu] = useState(false);
+  const galleryScrollRef = useRef<HTMLDivElement>(null);
+  const galleryViewportRef = useRef<HTMLDivElement>(null);
+  const galleryTrackRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const scrollArea = galleryScrollRef.current;
+    const viewport = galleryViewportRef.current;
+    const track = galleryTrackRef.current;
+    if (!scrollArea || !viewport || !track) return;
+
+    const desktop = window.matchMedia("(min-width: 768px)");
+    let frame = 0;
+
+    const updateGallery = () => {
+      if (desktop.matches) {
+        scrollArea.style.height = "";
+        track.style.transform = "";
+        return;
+      }
+
+      const style = window.getComputedStyle(viewport);
+      const horizontalPadding = parseFloat(style.paddingLeft) + parseFloat(style.paddingRight);
+      const contentWidth = viewport.clientWidth - horizontalPadding;
+      const distance = Math.max(0, track.scrollWidth - contentWidth);
+      scrollArea.style.height = `${viewport.offsetHeight + distance}px`;
+      const progress = Math.min(1, Math.max(0, -scrollArea.getBoundingClientRect().top / Math.max(distance, 1)));
+      track.style.transform = `translate3d(${-distance * progress}px, 0, 0)`;
+    };
+
+    const scheduleUpdate = () => {
+      if (frame) return;
+      frame = window.requestAnimationFrame(() => {
+        frame = 0;
+        updateGallery();
+      });
+    };
+
+    updateGallery();
+    window.addEventListener("scroll", scheduleUpdate, { passive: true });
+    window.addEventListener("resize", scheduleUpdate);
+    desktop.addEventListener("change", scheduleUpdate);
+
+    return () => {
+      window.removeEventListener("scroll", scheduleUpdate);
+      window.removeEventListener("resize", scheduleUpdate);
+      desktop.removeEventListener("change", scheduleUpdate);
+      if (frame) window.cancelAnimationFrame(frame);
+    };
+  }, []);
+
   const nav = [
     { href: "#arranjos", label: "Arranjos" },
     { href: "#como-pedir", label: "Como pedir" },
@@ -147,23 +197,27 @@ function Index() {
           </div>
         </Reveal>
 
-        <div className="mt-12 grid gap-10 px-5 md:mt-16 md:grid-cols-12 md:gap-6 md:overflow-visible md:px-12">
-          {gallery.map((g, i) => {
-            const layout = ["md:col-span-4 md:mt-0", "md:col-span-3 md:mt-24", "md:col-span-3 md:mt-8", "md:col-span-2 md:mt-40"][i];
-            return (
-              <Reveal key={g.alt} delay={i * 120} className={`w-full md:w-auto ${layout}`}>
-                <a href={waLink(MSG_ITEM)} target="_blank" rel="noopener noreferrer" className="group block" aria-label={`Consultar este arranjo: ${g.alt}`}>
-                  <div className="overflow-hidden bg-ivory">
-                    <img src={g.src} alt={g.alt} loading="lazy" className={`aspect-[3/4] w-full object-cover ${g.pos} transition-transform duration-[1200ms] ease-out group-hover:scale-105`} />
-                  </div>
-                  <span className="mt-4 inline-flex items-center gap-2 text-sm text-wine">
-                    <span className="h-px w-6 bg-crimson transition-all duration-500 group-hover:w-10" />
-                    Consultar este arranjo
-                  </span>
-                </a>
-              </Reveal>
-            );
-          })}
+        <div ref={galleryScrollRef} className="relative mt-12 h-[210svh] md:mt-16 md:h-auto md:px-12">
+          <div ref={galleryViewportRef} className="sticky top-0 flex h-[100svh] items-center overflow-hidden px-5 md:static md:block md:h-auto md:overflow-visible md:px-0">
+            <div ref={galleryTrackRef} className="flex w-max gap-4 will-change-transform md:grid md:w-full md:grid-cols-12 md:gap-6 md:overflow-visible md:will-change-auto">
+              {gallery.map((g, i) => {
+                const layout = ["md:col-span-4 md:mt-0", "md:col-span-3 md:mt-24", "md:col-span-3 md:mt-8", "md:col-span-2 md:mt-40"][i];
+                return (
+                  <Reveal key={g.alt} delay={i * 120} className={`w-[78vw] shrink-0 sm:w-[55vw] md:w-auto ${layout}`}>
+                    <a href={waLink(MSG_ITEM)} target="_blank" rel="noopener noreferrer" className="group block" aria-label={`Consultar este arranjo: ${g.alt}`}>
+                      <div className="overflow-hidden bg-ivory">
+                        <img src={g.src} alt={g.alt} loading="lazy" className={`aspect-[3/4] w-full object-cover ${g.pos} transition-transform duration-[1200ms] ease-out group-hover:scale-105`} />
+                      </div>
+                      <span className="mt-4 inline-flex items-center gap-2 text-sm text-wine">
+                        <span className="h-px w-6 bg-crimson transition-all duration-500 group-hover:w-10" />
+                        Consultar este arranjo
+                      </span>
+                    </a>
+                  </Reveal>
+                );
+              })}
+            </div>
+          </div>
         </div>
       </section>
 
