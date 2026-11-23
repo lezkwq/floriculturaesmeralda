@@ -210,12 +210,33 @@ function Index() {
           <div ref={galleryViewportRef} className="sticky top-0 flex h-[100svh] items-center overflow-hidden px-5 md:static md:block md:h-auto md:overflow-visible md:px-0">
             <div ref={galleryTrackRef} className="flex w-max gap-4 will-change-transform md:grid md:w-full md:grid-cols-12 md:gap-6 md:overflow-visible md:will-change-auto">
               {gallery.map((g, i) => {
-                const layout = ["md:col-span-4 md:mt-0", "md:col-span-3 md:mt-24", "md:col-span-3 md:mt-8", "md:col-span-2 md:mt-40"][i];
+                const layout = [
+                  "md:col-span-7",
+                  "md:col-span-5 md:mt-24",
+                  "md:col-span-4",
+                  "md:col-span-4 md:mt-16",
+                  "md:col-span-4 md:mt-6",
+                  "md:col-span-5",
+                  "md:col-span-7 md:mt-24",
+                  "md:col-span-6",
+                  "md:col-span-6 md:mt-20",
+                ][i];
+                const imageShape = [
+                  "md:aspect-[4/3]",
+                  "md:aspect-[3/4]",
+                  "md:aspect-[4/5]",
+                  "md:aspect-[4/5]",
+                  "md:aspect-[4/5]",
+                  "md:aspect-[4/5]",
+                  "md:aspect-[4/3]",
+                  "md:aspect-[4/5]",
+                  "md:aspect-[4/5]",
+                ][i];
                 return (
                   <Reveal key={g.alt} delay={i * 120} className={`w-[78vw] shrink-0 sm:w-[55vw] md:w-auto ${layout}`}>
                     <a href={waLink(MSG_ITEM)} target="_blank" rel="noopener noreferrer" className="group block" aria-label={`Consultar este arranjo: ${g.alt}`}>
                       <div className="overflow-hidden bg-ivory">
-                        <img src={g.src} alt={g.alt} loading="lazy" className={`aspect-[3/4] w-full object-cover ${g.pos} transition-transform duration-[1200ms] ease-out group-hover:scale-105`} />
+                        <img src={g.src} alt={g.alt} loading="lazy" className={`aspect-[3/4] w-full object-cover ${imageShape} ${g.pos} transition-transform duration-[1200ms] ease-out group-hover:scale-105`} />
                       </div>
                       <span className="mt-4 inline-flex items-center gap-2 text-sm text-wine">
                         <span className="h-px w-6 bg-crimson transition-all duration-500 group-hover:w-10" />
