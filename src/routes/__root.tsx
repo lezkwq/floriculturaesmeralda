@@ -81,8 +81,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Fran Flores — Floricultura em Blumenau" },
-      { name: "description", content: "Buquês e arranjos da Fran Flores, floricultura em Blumenau (SC)." },
+      { title: "Magia das Flores — Floricultura em Pomerode" },
+      { name: "description", content: "Flores, buquês e arranjos da Magia das Flores em Pomerode (SC)." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
