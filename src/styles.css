@@ -41,12 +41,12 @@
 
 :root {
   --radius: 0.25rem;
-  --wine: oklch(0.3 0.09 25);         /* vinho da identidade visual */
-  --wine-deep: oklch(0.22 0.07 25);
-  --crimson: oklch(0.52 0.18 18);     /* vermelho da marca */
+  --wine: oklch(0.34 0.09 150);
+  --wine-deep: oklch(0.23 0.065 150);
+  --crimson: oklch(0.43 0.12 148);
   --botanic: oklch(0.38 0.04 155);
   --ivory: oklch(0.96 0.015 80);
-  --blush: oklch(0.77 0.06 20);
+  --blush: oklch(0.78 0.06 145);
   --on-photo: oklch(0.99 0.005 80);
   --background: oklch(0.985 0.008 80);
   --foreground: oklch(0.24 0.01 40);
@@ -67,7 +67,7 @@
   --border: oklch(0.89 0.015 60);
   --input: var(--border);
   --ring: var(--crimson);
-  --hero-veil: linear-gradient(180deg, oklch(0.2 0.07 25 / 0.55) 0%, oklch(0.2 0.07 25 / 0) 28%, oklch(0.2 0.07 25 / 0.15) 40%, oklch(0.18 0.07 25 / 0.88) 100%);
+  --hero-veil: linear-gradient(180deg, oklch(0.2 0.07 150 / 0.55) 0%, oklch(0.2 0.07 150 / 0) 28%, oklch(0.2 0.07 150 / 0.15) 40%, oklch(0.18 0.07 150 / 0.88) 100%);
 }
 
 @layer base {

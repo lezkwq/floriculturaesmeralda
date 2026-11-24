@@ -1,6 +1,6 @@
-# Magia das Flores Floricultura
+# Floricultura Esmeralda
 
-Site institucional da Magia das Flores, floricultura em Pomerode, Santa Catarina.
+Site institucional da Floricultura Esmeralda, em Forquilhas, São José, Santa Catarina.
 
 ## Desenvolvimento
 
